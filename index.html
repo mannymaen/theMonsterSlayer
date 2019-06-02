@@ -8,16 +8,74 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="app.css">
+
     <title>Vue.js</title>
   </head>
   <body>
     <div id="app" class="container">
       <div class="jumbotron mt-3">
-       <h1>Jumbotron</h1>
+       <h1 class="text-center">The Monster Slayer</h1>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label>What's your name?</label>
+            <input class="form-control" type="text" v-model="playerName">
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <h3>{{playerName}}</h3>
+              <div class="progress">
+                <div class="progress-bar bg-success" :style="playerLifeProgressBar" role="progressbar">{{playerLife}}%</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <h3>Monster</h3>
+              <div class="progress">
+                <div class="progress-bar bg-danger" :style="monsterLifeProgressBar" role="progressbar">{{monsterLife}}%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-2">
+            <div class="card-body" v-if="isGameStarted">
+              <div class="row">
+                <div class="col-md-3 d-flex justify-content-center">
+                  <button class="btn btn-block btn-danger action-button" @click="affectLife('normal')">Attack</button>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center">
+                  <button class="btn btn-block btn-warning action-button" @click="affectLife('special')">Special Attack</button>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center">
+                  <button class="btn btn-block btn-success action-button" @click="affectLife('heal')">Heal</button>
+                </div>
+                <div class="col-md-3 d-flex justify-content-center">
+                  <button class="btn btn-block btn-dark action-button" @click="endGame()">Give Up</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body d-flex justify-content-center" v-else>
+              <button class="btn btn-lg btn-info action-button" @click="startGame()">Start Game</button>
+            </div>
+          </div>
+
+          <ul class="list-group mt-2 text-center">
+            <li class="list-group-item" v-for="attack in attackLogs">{{attack}}</li>
+          </ul>
+
+        </div>
       </div>
     </div>
 
     <!-- Optional JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
