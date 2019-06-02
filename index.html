@@ -8,16 +8,46 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="app.css">
+
     <title>Vue.js</title>
   </head>
   <body>
     <div id="app" class="container">
       <div class="jumbotron mt-3">
-       <h1>Jumbotron</h1>
+       <h1 class="text-center">The Monster Slayer</h1>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <h3>You</h3>
+              <div class="progress">
+                <div class="progress-bar bg-success w-100" role="progressbar">100%</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <h3>Monster</h3>
+              <div class="progress">
+                <div class="progress-bar bg-danger w-100" role="progressbar">100%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-2">
+            <div class="card-body d-flex justify-content-center">
+              <button class="btn btn-lg btn-danger action-button">Attack</button>
+              <button class="btn btn-lg btn-warning action-button">Special</button>
+              <button class="btn btn-lg btn-success action-button">Heal</button>
+              <button class="btn btn-lg btn-dark action-button">Give Up</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Optional JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
